@@ -1,0 +1,15 @@
+include:
+    - CategorieFixtures.yaml
+    - UserFixtures.yaml
+
+App\Entity\Article:
+    article{1..50}:
+        title (unique): <words(2, true)>
+        metaTitle (unique): <sentence(5)>
+        metaDescription: <sentence(10)>
+        content: <generateArticleContent()>
+        enable: <boolean()>
+        createdAt: <generateArticleDate()>
+        user: "@user*"
+        categories: "<numberBetween(1, 5)>x @tag*"
+        images: "<numberBetween(1, 3)>x <uploadArticleImage()>"
